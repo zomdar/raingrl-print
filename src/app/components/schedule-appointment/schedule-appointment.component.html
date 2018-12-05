@@ -1,0 +1,103 @@
+<div class="container mt-5">
+  <h1>Schedule Appointment</h1>
+  <br>
+  <hr>
+  <br>
+  <p class="text-muted">Contact us for a design consultation. We'll get back to you promptly.</p>
+  <br>
+  <div class="col-md-7">
+    <form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-6 required">
+          <label class="control-label" for="firstName">First Name</label>
+          <input 
+            class="form-control"
+            type="text" 
+            name="firstName"
+            required
+            #firstName="ngModel"
+            [ngModel]="customerDetail?.firstName">
+          <div *ngIf="firstName.errors?.required && firstName.dirty" class="error">
+            First name is required
+          </div>
+        </div>
+        <div class="form-group col-md-6 required">
+          <label class="control-label" for="lastName">Last Name</label>
+          <input
+            class="form-control"
+            type="text" 
+            name="lastName" 
+            required
+            #lastName="ngModel"
+            [ngModel]="customerDetail?.lastName">
+          <div *ngIf="lastName.errors?.required && lastName.dirty" class="error">
+            Last name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required">
+        <label class="control-label" for="emailAddress">Email Address</label>
+        <input 
+          class="form-control"
+          type="email" 
+          required
+          #emailAddress="ngModel"
+          name="emailAddress" 
+          [ngModel]="customerDetail?.emailAddress">
+        <div *ngIf="emailAddress.errors?.required && emailAddress.dirty" class="error">
+          Email address is required
+        </div>
+      </div>
+
+      <div class="form-group required">
+        <label class="control-label" for="productEndDate">Date</label>
+        <br>
+        <small class="text-muted">When do you need the product by?</small>
+        <div class="form-group">
+          <div class="input-group">
+            <input 
+              class="form-control" 
+              placeholder="yyyy-mm-dd"
+              name="productEndDate" 
+              #productEndDate="ngModel"
+              [ngModel]="customerDetail?.productEndDate" 
+              ngbDatepicker 
+              #d="ngbDatepicker"
+              required>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                <fa-icon [icon]="faCalendarAlt"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div *ngIf="productEndDate.errors?.required && productEndDate.dirty" class="error">
+            Date is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group required">
+        <label class="control-label" for="message">Message</label>
+        <br>
+        <small class="text-muted">Tell us a little about the project. Why do you need the product? About how many items will you need?</small>
+        <textarea
+          class="form-control"
+          rows="5"
+          type="text" 
+          required
+          #message="ngModel"
+          name="message" 
+          [ngModel]="customerDetail?.message">
+        </textarea>
+        <div *ngIf="message.errors?.required && message.dirty" class="error">
+          Message is required
+        </div>
+      </div>
+
+      <button class="btn btn-warning" type="submit" [disabled]="form.invalid">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

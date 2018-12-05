@@ -1,0 +1,12 @@
+.business-header {
+    min-height: 300px;
+    background: url("../../assets/img/Silk-Screen-Banner.png") center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.card {
+    height: 100%;
+}

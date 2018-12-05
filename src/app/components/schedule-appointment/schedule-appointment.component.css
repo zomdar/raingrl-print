@@ -1,0 +1,9 @@
+.error {
+    color: #da6969;
+    font-size: 10px;
+}
+
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+}
